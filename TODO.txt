@@ -1,0 +1,9 @@
+docker download and install needs to be made smoother
+    update read me
+php download and install needs to be made smoother and make sure apache2 doesnt get installed
+    update read me
+nginx download and install needs to be make smoother
+    update read me
+make a AWS walkthrough
+composer download and install needs to be made smoother
+    update read me
