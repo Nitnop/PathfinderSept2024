@@ -42,35 +42,6 @@ services:
       - /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
     restart: always
-  pf-redis:
-    image: redis:6.2.5-alpine3.14
-    command: ["redis-server", "--appendonly", "yes"]
-    container_name: redis
-    volumes:
-      - redis_data:/data
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-    networks:
-      pf:
-        aliases:
-          - "$REDIS_HOST"
-    logging:
-      driver: none
-    restart: always
-  pf-socket:
-    image: ghcr.io/goryn-clade/pf-websocket:latest
-    command: ["--tcpHost", "0.0.0.0"]
-    container_name: socket
-    networks:
-      pf:
-         aliases:
-           - "$PATHFINDER_SOCKET_HOST"
-    volumes:
-      - ./logs:/var/www/html/pathfinder/history/map
-      - /etc/timezone:/etc/timezone:ro
-      - /etc/localtime:/etc/localtime:ro
-
-    restart: always
   pf:
     container_name: pathfinder
     image: ghcr.io/goryn-clade/pathfinder:latest
